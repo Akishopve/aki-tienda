@@ -1,0 +1,12 @@
+# Nunca subir secretos ni datos de clientes
+.env
+.env.*
+*.key
+*.pem
+memory/
+.vercel/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+desktop.ini

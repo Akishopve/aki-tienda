@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKI · Todo lo que necesitas está AKI</title>
+<meta name="description" content="Tienda online AKI: belleza, ropa, accesorios y mucho más. Compra al mayor y al detal. Haz tu pedido por WhatsApp.">
+<style>
+  :root{
+    --navy:#16357E;--royal:#2E7CC4;--teal:#20B8CE;--light:#36C5D8;
+    --ink:#0E1B3D;--muted:#5b6680;--bg:#f6f9fc;--white:#fff;--wa:#25D366;
+    --line:#e7eef6;--radius:16px;--shadow:0 14px 40px rgba(22,53,126,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  a{color:inherit}
+
+  /* logo */
+  .logo{font-weight:800;letter-spacing:.04em;display:inline-flex;line-height:1}
+  .logo .a{color:var(--navy)}.logo .k{color:var(--royal)}.logo .i{color:var(--teal)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:16px;height:68px}
+  .nav .logo{font-size:30px}
+  .nav .slogan{color:var(--muted);font-size:13px;font-weight:600;display:none}
+  @media(min-width:900px){.nav .slogan{display:block}}
+  .nav .spacer{flex:1}
+  .cart-btn{position:relative;background:var(--navy);color:#fff;border:none;cursor:pointer;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px}
+  .cart-btn .count{position:absolute;top:-7px;right:-7px;background:var(--teal);color:#04263b;font-size:12px;font-weight:800;min-width:22px;height:22px;border-radius:11px;display:grid;place-items:center;padding:0 5px}
+
+  /* hero */
+  .hero{background:radial-gradient(1100px 520px at 85% -10%,rgba(54,197,216,.18),transparent 60%),linear-gradient(135deg,#fff,#eef5fb);padding:60px 0 56px;text-align:center}
+  .hero .logo-big{font-size:clamp(56px,14vw,120px);font-weight:800;margin-bottom:4px}
+  .hero .logo-big .a{color:var(--navy)}.hero .logo-big .k{color:var(--royal)}.hero .logo-big .i{color:var(--teal)}
+  .slogan-main{font-size:clamp(18px,3.4vw,26px);font-weight:700;background:linear-gradient(90deg,var(--navy),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
+  .hero h1{font-size:clamp(26px,4.6vw,42px);font-weight:800;line-height:1.15;max-width:760px;margin:0 auto 14px}
+  .hero p.sub{font-size:clamp(16px,2.3vw,20px);color:var(--muted);max-width:600px;margin:0 auto 20px}
+  .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px;color:var(--navy);box-shadow:var(--shadow)}
+  .pill b{color:var(--teal)}
+  .btn{display:inline-flex;align-items:center;gap:9px;border:none;cursor:pointer;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;padding:15px 30px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;box-shadow:0 12px 28px rgba(22,53,126,.28)}
+
+  /* mode toggle */
+  .mode-bar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:30}
+  .mode-inner{display:flex;align-items:center;gap:14px;justify-content:center;padding:14px 0;flex-wrap:wrap}
+  .mode-label{font-weight:700;color:var(--muted);font-size:14px}
+  .toggle{display:inline-flex;background:#eef3f9;border-radius:999px;padding:4px}
+  .toggle button{border:none;background:transparent;cursor:pointer;padding:9px 22px;border-radius:999px;font-weight:700;font-size:15px;color:var(--muted)}
+  .toggle button.active{background:var(--navy);color:#fff}
+  .mode-note{font-size:13px;color:var(--muted)}
+
+  /* categories filter */
+  .cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:26px 0 6px}
+  .cat{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font-weight:700;font-size:14px;cursor:pointer;color:var(--navy)}
+  .cat.active{background:var(--teal);border-color:var(--teal);color:#04263b}
+
+  /* products */
+  .section-title{text-align:center;padding:34px 0 10px}
+  .section-title h2{font-size:clamp(24px,4vw,34px);font-weight:800}
+  .section-title p{color:var(--muted);margin-top:6px}
+  .grid{display:grid;gap:22px;grid-template-columns:repeat(2,1fr);padding:24px 0 60px}
+  @media(min-width:680px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:980px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .thumb{aspect-ratio:1/1;display:grid;place-items:center;font-size:54px;background:linear-gradient(135deg,#eaf3fb,#dcecf7)}
+  .card-body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card .cat-tag{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+  .card h3{font-size:16px;line-height:1.3}
+  .card .price{font-size:20px;font-weight:800;color:var(--navy);margin-top:auto}
+  .card .price small{font-size:12px;color:var(--muted);font-weight:600}
+  .add{margin-top:10px;border:none;cursor:pointer;background:var(--navy);color:#fff;font-weight:700;border-radius:10px;padding:11px;font-size:14px;transition:background .15s}
+  .add:hover{background:var(--royal)}
+
+  /* trust strip */
+  .trust{background:linear-gradient(135deg,var(--navy),#0f2a63);color:#fff;padding:50px 0}
+  .trust-grid{display:grid;gap:24px;grid-template-columns:1fr;text-align:center;max-width:900px;margin:0 auto}
+  @media(min-width:760px){.trust-grid{grid-template-columns:repeat(3,1fr)}}
+  .trust h3{font-size:18px;margin-bottom:6px}
+  .trust p{color:#c4d3ec;font-size:15px}
+  .trust .ic{font-size:34px;margin-bottom:10px}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(8,18,45,.45);opacity:0;visibility:hidden;transition:.2s;z-index:60}
+  .overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:70;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{padding:20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .drawer-head h3{font-size:20px}
+  .close{background:none;border:none;font-size:26px;cursor:pointer;color:var(--muted);line-height:1}
+  .drawer-items{flex:1;overflow-y:auto;padding:10px 20px}
+  .empty{text-align:center;color:var(--muted);padding:50px 10px}
+  .ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .ci .ci-thumb{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,#eaf3fb,#dcecf7);display:grid;place-items:center;font-size:26px;flex-shrink:0}
+  .ci .ci-info{flex:1}
+  .ci .ci-info h4{font-size:14px;margin-bottom:2px}
+  .ci .ci-info .ci-price{color:var(--navy);font-weight:700;font-size:14px}
+  .qty{display:inline-flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:8px;margin-top:6px}
+  .qty button{width:28px;height:28px;border:none;background:#f2f6fb;cursor:pointer;font-size:16px;font-weight:700;color:var(--navy)}
+  .qty span{width:34px;text-align:center;font-weight:700;font-size:14px}
+  .ci .rm{background:none;border:none;color:#c0392b;cursor:pointer;font-size:12px;margin-top:6px;display:block}
+  .drawer-foot{padding:20px;border-top:1px solid var(--line)}
+  .totrow{display:flex;justify-content:space-between;font-size:18px;font-weight:800;margin-bottom:6px}
+  .foot-note{font-size:12px;color:var(--muted);margin-bottom:14px}
+  .checkout{width:100%;background:var(--wa);color:#fff;border:none;cursor:pointer;border-radius:12px;padding:16px;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:9px}
+  .checkout:disabled{opacity:.5;cursor:not-allowed}
+  .wa-ico{width:20px;height:20px;fill:currentColor}
+
+  /* footer */
+  footer{background:#0c1838;color:#9fb0d0;text-align:center;padding:36px 0;font-size:14px}
+  footer .logo{font-size:24px;margin-bottom:8px}
+  footer .logo .a{color:#fff}footer .logo .k{color:var(--royal)}footer .logo .i{color:var(--light)}
+  footer a{color:var(--light);text-decoration:none}
+
+  /* toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:999px;font-weight:700;z-index:90;transition:transform .25s;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="wa" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></symbol></svg>
+
+<header>
+  <div class="wrap nav">
+    <span class="logo"><span class="a">A</span><span class="k">K</span><span class="i">I</span></span>
+    <span class="slogan">Todo lo que necesitas está AKI</span>
+    <span class="spacer"></span>
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Carrito <span class="count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="logo-big"><span class="a">A</span><span class="k">K</span><span class="i">I</span></div>
+    <div class="slogan-main">Todo lo que necesitas está AKI</div>
+    <h1>Tu tienda online de belleza, ropa, accesorios y mucho más</h1>
+    <p class="sub">Los mejores precios y calidad del mercado. Compra fácil, paga por WhatsApp.</p>
+    <div class="pills">
+      <span class="pill">🛍️ Venta al <b>Detal</b></span>
+      <span class="pill">📦 Venta al <b>Mayor</b> · desde 6 unidades</span>
+      <span class="pill">⚡ Pedido por <b>WhatsApp</b></span>
+    </div>
+    <a class="btn btn-primary" href="#tienda">Ver productos</a>
+  </div>
+</section>
+
+<!-- MODE TOGGLE -->
+<div class="mode-bar">
+  <div class="wrap mode-inner">
+    <span class="mode-label">¿Cómo compras hoy?</span>
+    <div class="toggle">
+      <button id="btnDetal" class="active" onclick="setMode('detal')">Al Detal</button>
+      <button id="btnMayor" onclick="setMode('mayor')">Al Mayor</button>
+    </div>
+    <span class="mode-note" id="modeNote">Precios al detal — compra desde 1 unidad.</span>
+  </div>
+</div>
+
+<!-- TIENDA -->
+<section id="tienda">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Nuestra tienda</h2>
+      <p>Filtra por categoría y agrega al carrito lo que necesites.</p>
+    </div>
+    <div class="cats" id="cats"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div><div class="ic">💸</div><h3>Mejores precios</h3><p>Calidad y precio que no consigues en otro lado.</p></div>
+      <div><div class="ic">🛍️</div><h3>Mayor y detal</h3><p>Compra una pieza o surte tu negocio completo.</p></div>
+      <div><div class="ic">⚡</div><h3>Pedido fácil</h3><p>Arma tu carrito y confirma por WhatsApp en segundos.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="a">A</span><span class="k">K</span><span class="i">I</span></div>
+    <div>Todo lo que necesitas está AKI · Ventas al mayor y al detal</div>
+    <div style="margin-top:8px">WhatsApp: <a href="https://wa.me/584129162019" target="_blank" rel="noopener">+58 412-916-2019</a></div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito">
+  <div class="drawer-head">
+    <h3>Tu carrito</h3>
+    <button class="close" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="totrow"><span>Total</span><span id="cartTotal">$0</span></div>
+    <div class="foot-note" id="footNote"></div>
+    <button class="checkout" id="checkoutBtn" onclick="checkout()" disabled>
+      <svg class="wa-ico"><use href="#wa"/></svg> Confirmar pedido por WhatsApp
+    </button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   EDITA AQUÍ TUS PRODUCTOS  ← Jose, cambia esto por lo real.
+   precioDetal = precio por 1 unidad
+   precioMayor = precio por unidad comprando al mayor
+   cat: "Belleza" | "Ropa" | "Accesorios" | "Otros"
+   img: por ahora un emoji. Para foto real, ver nota abajo del archivo.
+   ============================================================ */
+const PRODUCTOS = [
+  {id:1,  nombre:"Labial mate larga duración", cat:"Belleza",     precioDetal:5,  precioMayor:3.2, img:"💄"},
+  {id:2,  nombre:"Set de brochas de maquillaje", cat:"Belleza",   precioDetal:12, precioMayor:8,   img:"🖌️"},
+  {id:3,  nombre:"Crema hidratante facial",     cat:"Belleza",     precioDetal:9,  precioMayor:6,   img:"🧴"},
+  {id:4,  nombre:"Perfume femenino 50ml",       cat:"Belleza",     precioDetal:18, precioMayor:12,  img:"🌸"},
+  {id:5,  nombre:"Franela básica unisex",       cat:"Ropa",        precioDetal:8,  precioMayor:5,   img:"👕"},
+  {id:6,  nombre:"Jeans dama corte recto",      cat:"Ropa",        precioDetal:22, precioMayor:15,  img:"👖"},
+  {id:7,  nombre:"Vestido casual de verano",    cat:"Ropa",        precioDetal:25, precioMayor:17,  img:"👗"},
+  {id:8,  nombre:"Gorra ajustable",             cat:"Accesorios",  precioDetal:7,  precioMayor:4.5, img:"🧢"},
+  {id:9,  nombre:"Reloj de pulsera unisex",     cat:"Accesorios",  precioDetal:15, precioMayor:10,  img:"⌚"},
+  {id:10, nombre:"Lentes de sol UV",            cat:"Accesorios",  precioDetal:10, precioMayor:6.5, img:"🕶️"},
+  {id:11, nombre:"Cartera de dama",             cat:"Accesorios",  precioDetal:20, precioMayor:13,  img:"👜"},
+  {id:12, nombre:"Termo / botella deportiva",   cat:"Otros",       precioDetal:11, precioMayor:7,   img:"🥤"},
+  {id:13, nombre:"Audífonos inalámbricos",      cat:"Otros",       precioDetal:16, precioMayor:11,  img:"🎧"},
+  {id:14, nombre:"Organizador de escritorio",   cat:"Otros",       precioDetal:9,  precioMayor:6,   img:"🗂️"},
+];
+
+const WHATSAPP = "584129162019";   // ← tu número (formato internacional, sin +)
+const MIN_MAYOR = 6;               // ← mínimo de unidades al mayor
+const MONEDA = "$";                // ← símbolo de moneda
+
+/* ---------------- estado ---------------- */
+let modo = "detal";
+let filtro = "Todos";
+let cart = {}; // {id: qty}
+
+const $ = s => document.querySelector(s);
+const precioDe = p => modo === "mayor" ? p.precioMayor : p.precioDetal;
+const fmt = n => MONEDA + (Math.round(n*100)/100);
+
+/* ---------------- render categorías ---------------- */
+function renderCats(){
+  const cats = ["Todos", ...new Set(PRODUCTOS.map(p=>p.cat))];
+  $("#cats").innerHTML = cats.map(c =>
+    `<button class="cat ${c===filtro?'active':''}" onclick="setFiltro('${c}')">${c}</button>`
+  ).join("");
+}
+function setFiltro(c){ filtro=c; renderCats(); renderGrid(); }
+
+/* ---------------- render productos ---------------- */
+function renderGrid(){
+  const lista = PRODUCTOS.filter(p => filtro==="Todos" || p.cat===filtro);
+  $("#grid").innerHTML = lista.map(p => `
+    <div class="card">
+      <div class="thumb">${p.img}</div>
+      <div class="card-body">
+        <span class="cat-tag">${p.cat}</span>
+        <h3>${p.nombre}</h3>
+        <div class="price">${fmt(precioDe(p))} <small>${modo==='mayor'?'c/u al mayor':'c/u'}</small></div>
+        <button class="add" onclick="addToCart(${p.id})">Agregar</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ---------------- modo detal/mayor ---------------- */
+function setMode(m){
+  modo = m;
+  $("#btnDetal").classList.toggle("active", m==="detal");
+  $("#btnMayor").classList.toggle("active", m==="mayor");
+  $("#modeNote").textContent = m==="mayor"
+    ? `Precios al mayor — pedido mínimo ${MIN_MAYOR} unidades en total.`
+    : "Precios al detal — compra desde 1 unidad.";
+  renderGrid();
+  renderCart();
+}
+
+/* ---------------- carrito ---------------- */
+function addToCart(id){
+  cart[id] = (cart[id]||0) + 1;
+  save(); renderCart(); updateCount();
+  const p = PRODUCTOS.find(x=>x.id===id);
+  toast(`✓ ${p.nombre} agregado`);
+}
+function changeQty(id, d){
+  cart[id] = (cart[id]||0) + d;
+  if(cart[id] <= 0) delete cart[id];
+  save(); renderCart(); updateCount();
+}
+function removeItem(id){ delete cart[id]; save(); renderCart(); updateCount(); }
+
+function totalUnidades(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function totalPrecio(){
+  return Object.entries(cart).reduce((sum,[id,q])=>{
+    const p = PRODUCTOS.find(x=>x.id==id); return sum + precioDe(p)*q;
+  },0);
+}
+function updateCount(){ $("#cartCount").textContent = totalUnidades(); }
+
+function renderCart(){
+  const ids = Object.keys(cart);
+  const box = $("#drawerItems");
+  if(ids.length===0){
+    box.innerHTML = `<div class="empty">Tu carrito está vacío.<br>Agrega productos para empezar.</div>`;
+  } else {
+    box.innerHTML = ids.map(id=>{
+      const p = PRODUCTOS.find(x=>x.id==id); const q = cart[id];
+      return `<div class="ci">
+        <div class="ci-thumb">${p.img}</div>
+        <div class="ci-info">
+          <h4>${p.nombre}</h4>
+          <div class="ci-price">${fmt(precioDe(p))} c/u</div>
+          <div class="qty">
+            <button onclick="changeQty(${id},-1)">−</button>
+            <span>${q}</span>
+            <button onclick="changeQty(${id},1)">+</button>
+          </div>
+          <button class="rm" onclick="removeItem(${id})">Quitar</button>
+        </div>
+        <div style="font-weight:800;color:var(--navy)">${fmt(precioDe(p)*q)}</div>
+      </div>`;
+    }).join("");
+  }
+  $("#cartTotal").textContent = fmt(totalPrecio());
+
+  // mínimo al mayor
+  const u = totalUnidades();
+  const btn = $("#checkoutBtn"); const note = $("#footNote");
+  if(u===0){ btn.disabled = true; note.textContent = ""; }
+  else if(modo==="mayor" && u < MIN_MAYOR){
+    btn.disabled = true;
+    note.textContent = `⚠️ Al mayor el mínimo es ${MIN_MAYOR} unidades. Te faltan ${MIN_MAYOR-u}.`;
+  } else {
+    btn.disabled = false;
+    note.textContent = `${u} ${u===1?'unidad':'unidades'} · compra al ${modo}.`;
+  }
+}
+
+/* ---------------- drawer ---------------- */
+function openCart(){ $("#drawer").classList.add("open"); $("#overlay").classList.add("open"); }
+function closeCart(){ $("#drawer").classList.remove("open"); $("#overlay").classList.remove("open"); }
+
+/* ---------------- checkout WhatsApp ---------------- */
+function checkout(){
+  const ids = Object.keys(cart); if(ids.length===0) return;
+  let msg = `¡Hola AKI! 🛒 Quiero hacer este pedido (al ${modo}):\n\n`;
+  ids.forEach(id=>{
+    const p = PRODUCTOS.find(x=>x.id==id); const q = cart[id];
+    msg += `• ${q}x ${p.nombre} — ${fmt(precioDe(p))} c/u = ${fmt(precioDe(p)*q)}\n`;
+  });
+  msg += `\nTotal: ${fmt(totalPrecio())} (${totalUnidades()} unidades)`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+/* ---------------- persistencia ---------------- */
+function save(){ localStorage.setItem("aki_cart", JSON.stringify(cart)); }
+function load(){ try{ cart = JSON.parse(localStorage.getItem("aki_cart"))||{}; }catch(e){ cart={}; } }
+
+/* ---------------- toast ---------------- */
+let toastT;
+function toast(t){
+  const el=$("#toast"); el.textContent=t; el.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),1800);
+}
+
+/* ---------------- init ---------------- */
+load(); renderCats(); renderGrid(); renderCart(); updateCount();
+</script>
+</body>
+</html>
