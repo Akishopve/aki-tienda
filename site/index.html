@@ -5,158 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AKI · Todo lo que necesitas está AKI</title>
 <meta name="description" content="Tienda online AKI: belleza, ropa, accesorios y mucho más. Compra al mayor y al detal. Haz tu pedido por WhatsApp.">
-<style>
-  :root{
-    --navy:#16357E;--royal:#2E7CC4;--teal:#20B8CE;--light:#36C5D8;
-    --ink:#0E1B3D;--muted:#5b6680;--bg:#f6f9fc;--white:#fff;--wa:#25D366;
-    --line:#e7eef6;--radius:16px;--shadow:0 14px 40px rgba(22,53,126,.10);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-  a{color:inherit}
-
-  /* logo */
-  .logo{font-weight:800;letter-spacing:.04em;display:inline-flex;line-height:1}
-  .logo .a{color:var(--navy)}.logo .k{color:var(--royal)}.logo .i{color:var(--teal)}
-
-  /* header */
-  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:16px;height:68px}
-  .nav .logo{font-size:30px}
-  .nav .slogan{color:var(--muted);font-size:13px;font-weight:600;display:none}
-  @media(min-width:900px){.nav .slogan{display:block}}
-  .nav .spacer{flex:1}
-  .cart-btn{position:relative;background:var(--navy);color:#fff;border:none;cursor:pointer;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px}
-  .cart-btn .count{position:absolute;top:-7px;right:-7px;background:var(--teal);color:#04263b;font-size:12px;font-weight:800;min-width:22px;height:22px;border-radius:11px;display:grid;place-items:center;padding:0 5px}
-
-  /* hero */
-  .hero{background:radial-gradient(1100px 520px at 85% -10%,rgba(54,197,216,.18),transparent 60%),linear-gradient(135deg,#fff,#eef5fb);padding:60px 0 56px;text-align:center}
-  .hero .logo-big{font-size:clamp(56px,14vw,120px);font-weight:800;margin-bottom:4px}
-  .hero .logo-big .a{color:var(--navy)}.hero .logo-big .k{color:var(--royal)}.hero .logo-big .i{color:var(--teal)}
-  .slogan-main{font-size:clamp(18px,3.4vw,26px);font-weight:700;background:linear-gradient(90deg,var(--navy),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
-  .hero h1{font-size:clamp(26px,4.6vw,42px);font-weight:800;line-height:1.15;max-width:760px;margin:0 auto 14px}
-  .hero p.sub{font-size:clamp(16px,2.3vw,20px);color:var(--muted);max-width:600px;margin:0 auto 20px}
-  .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
-  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px;color:var(--navy);box-shadow:var(--shadow)}
-  .pill b{color:var(--teal)}
-  .btn{display:inline-flex;align-items:center;gap:9px;border:none;cursor:pointer;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;padding:15px 30px;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;box-shadow:0 12px 28px rgba(22,53,126,.28)}
-
-  /* mode toggle */
-  .mode-bar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:30}
-  .mode-inner{display:flex;align-items:center;gap:14px;justify-content:center;padding:14px 0;flex-wrap:wrap}
-  .mode-label{font-weight:700;color:var(--muted);font-size:14px}
-  .toggle{display:inline-flex;background:#eef3f9;border-radius:999px;padding:4px}
-  .toggle button{border:none;background:transparent;cursor:pointer;padding:9px 22px;border-radius:999px;font-weight:700;font-size:15px;color:var(--muted)}
-  .toggle button.active{background:var(--navy);color:#fff}
-  .mode-note{font-size:13px;color:var(--muted)}
-
-  /* categories filter */
-  .cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:26px 0 6px}
-  .cat{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font-weight:700;font-size:14px;cursor:pointer;color:var(--navy)}
-  .cat.active{background:var(--teal);border-color:var(--teal);color:#04263b}
-
-  /* products */
-  .section-title{text-align:center;padding:34px 0 10px}
-  .section-title h2{font-size:clamp(24px,4vw,34px);font-weight:800}
-  .section-title p{color:var(--muted);margin-top:6px}
-  .grid{display:grid;gap:22px;grid-template-columns:repeat(2,1fr);padding:24px 0 60px}
-  @media(min-width:680px){.grid{grid-template-columns:repeat(3,1fr)}}
-  @media(min-width:980px){.grid{grid-template-columns:repeat(4,1fr)}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-  .thumb{aspect-ratio:1/1;display:grid;place-items:center;font-size:54px;background:linear-gradient(135deg,#eaf3fb,#dcecf7)}
-  .card-body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .card .cat-tag{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
-  .card h3{font-size:16px;line-height:1.3}
-  .card .price{font-size:20px;font-weight:800;color:var(--navy);margin-top:auto}
-  .card .price small{font-size:12px;color:var(--muted);font-weight:600}
-  .add{margin-top:10px;border:none;cursor:pointer;background:var(--navy);color:#fff;font-weight:700;border-radius:10px;padding:11px;font-size:14px;transition:background .15s}
-  .add:hover{background:var(--royal)}
-
-  /* trust strip */
-  .trust{background:linear-gradient(135deg,var(--navy),#0f2a63);color:#fff;padding:50px 0}
-  .trust-grid{display:grid;gap:24px;grid-template-columns:1fr;text-align:center;max-width:900px;margin:0 auto}
-  @media(min-width:760px){.trust-grid{grid-template-columns:repeat(3,1fr)}}
-  .trust h3{font-size:18px;margin-bottom:6px}
-  .trust p{color:#c4d3ec;font-size:15px}
-  .trust .ic{font-size:34px;margin-bottom:10px}
-
-  /* nav links */
-  .nav-links{display:none;gap:20px;font-weight:700;font-size:15px;margin-right:6px}
-  .nav-links a{color:var(--navy);text-decoration:none}
-  .nav-links a:hover{color:var(--teal)}
-  @media(min-width:760px){.nav-links{display:flex}}
-
-  /* librería */
-  .libreria{background:linear-gradient(180deg,#eef5fb,#f6f9fc);border-top:1px solid var(--line)}
-  .school-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 0 4px}
-  .school-tab{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 22px;font-weight:800;font-size:16px;cursor:pointer;color:var(--navy);display:flex;flex-direction:column;align-items:center;gap:2px;min-width:120px;transition:.15s}
-  .school-tab small{font-size:11px;font-weight:600;color:var(--muted)}
-  .school-tab.active{background:linear-gradient(135deg,var(--navy),var(--royal));color:#fff;border-color:transparent;box-shadow:var(--shadow)}
-  .school-tab.active small{color:#cfe2f4}
-  .grade-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:18px 0 6px}
-  .grade-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px;cursor:pointer;color:var(--navy)}
-  .grade-tab.active{background:var(--teal);border-color:var(--teal);color:#04263b}
-  .lista-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);max-width:760px;margin:18px auto 0;overflow:hidden}
-  .lista-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-  .lista-head h3{font-size:18px}
-  .lista-head .lh-note{font-size:13px;color:var(--muted)}
-  .lista-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)}
-  .lista-row:last-child{border-bottom:none}
-  .lista-row .lr-ico{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#eaf3fb,#dcecf7);display:grid;place-items:center;font-size:20px;flex-shrink:0}
-  .lista-row .lr-info{flex:1;min-width:0}
-  .lista-row .lr-info h4{font-size:14px;line-height:1.3}
-  .lista-row .lr-info small{color:var(--muted);font-size:12px}
-  .lista-row .qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px}
-  .lista-row .qty button{width:28px;height:28px;border:none;background:#f2f6fb;cursor:pointer;font-size:16px;font-weight:700;color:var(--navy)}
-  .lista-row .qty span{width:30px;text-align:center;font-weight:700;font-size:14px}
-  .lista-row .lr-sub{width:64px;text-align:right;font-weight:800;color:var(--navy);font-size:14px}
-  .lista-foot{padding:18px 20px;background:#f8fbfe;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-  .lista-foot .lf-tot{font-size:15px;font-weight:700;color:var(--muted)}
-  .lista-foot .lf-tot b{font-size:24px;color:var(--navy);display:block}
-  .lista-foot .add-lista{background:var(--navy);color:#fff;border:none;cursor:pointer;border-radius:12px;padding:14px 22px;font-weight:800;font-size:15px;flex:1;min-width:220px}
-  .lista-foot .add-lista:hover{background:var(--royal)}
-  .lista-empty{text-align:center;color:var(--muted);padding:30px}
-
-  /* cart drawer */
-  .overlay{position:fixed;inset:0;background:rgba(8,18,45,.45);opacity:0;visibility:hidden;transition:.2s;z-index:60}
-  .overlay.open{opacity:1;visibility:visible}
-  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:70;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
-  .drawer.open{transform:translateX(0)}
-  .drawer-head{padding:20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
-  .drawer-head h3{font-size:20px}
-  .close{background:none;border:none;font-size:26px;cursor:pointer;color:var(--muted);line-height:1}
-  .drawer-items{flex:1;overflow-y:auto;padding:10px 20px}
-  .empty{text-align:center;color:var(--muted);padding:50px 10px}
-  .ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-  .ci .ci-thumb{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,#eaf3fb,#dcecf7);display:grid;place-items:center;font-size:26px;flex-shrink:0}
-  .ci .ci-info{flex:1}
-  .ci .ci-info h4{font-size:14px;margin-bottom:2px}
-  .ci .ci-info .ci-price{color:var(--navy);font-weight:700;font-size:14px}
-  .qty{display:inline-flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:8px;margin-top:6px}
-  .qty button{width:28px;height:28px;border:none;background:#f2f6fb;cursor:pointer;font-size:16px;font-weight:700;color:var(--navy)}
-  .qty span{width:34px;text-align:center;font-weight:700;font-size:14px}
-  .ci .rm{background:none;border:none;color:#c0392b;cursor:pointer;font-size:12px;margin-top:6px;display:block}
-  .drawer-foot{padding:20px;border-top:1px solid var(--line)}
-  .totrow{display:flex;justify-content:space-between;font-size:18px;font-weight:800;margin-bottom:6px}
-  .foot-note{font-size:12px;color:var(--muted);margin-bottom:14px}
-  .checkout{width:100%;background:var(--wa);color:#fff;border:none;cursor:pointer;border-radius:12px;padding:16px;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:9px}
-  .checkout:disabled{opacity:.5;cursor:not-allowed}
-  .wa-ico{width:20px;height:20px;fill:currentColor}
-
-  /* footer */
-  footer{background:#0c1838;color:#9fb0d0;text-align:center;padding:36px 0;font-size:14px}
-  footer .logo{font-size:24px;margin-bottom:8px}
-  footer .logo .a{color:#fff}footer .logo .k{color:var(--royal)}footer .logo .i{color:var(--light)}
-  footer a{color:var(--light);text-decoration:none}
-
-  /* toast */
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:999px;font-weight:700;z-index:90;transition:transform .25s;box-shadow:0 12px 30px rgba(0,0,0,.25)}
-  .toast.show{transform:translateX(-50%) translateY(0)}
-</style>
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
@@ -169,7 +18,7 @@
     <span class="spacer"></span>
     <nav class="nav-links">
       <a href="#tienda">Tienda</a>
-      <a href="#libreria">📚 Librería</a>
+      <a href="libreria.html">📚 Librería</a>
     </nav>
     <button class="cart-btn" onclick="openCart()">
       🛒 Carrito <span class="count" id="cartCount">0</span>
@@ -190,6 +39,7 @@
       <span class="pill">⚡ Pedido por <b>WhatsApp</b></span>
     </div>
     <a class="btn btn-primary" href="#tienda">Ver productos</a>
+    <a class="btn btn-primary" href="libreria.html" style="margin-left:8px">📚 Listas escolares</a>
   </div>
 </section>
 
@@ -217,23 +67,6 @@
   </div>
 </section>
 
-<!-- LIBRERÍA -->
-<section id="libreria" class="libreria">
-  <div class="wrap">
-    <div class="section-title">
-      <h2>📚 Librería · Listas escolares</h2>
-      <p>Elige el colegio y el grado. Te armamos la lista completa de útiles y la agregas al carrito de una vez.</p>
-    </div>
-    <div class="school-tabs" id="schoolTabs"></div>
-    <div class="grade-tabs" id="gradeTabs"></div>
-    <div id="listaWrap"></div>
-    <p style="text-align:center;color:var(--muted);font-size:13px;margin:16px 0 50px">
-      ¿Tu colegio no está en la lista o tienes la lista oficial? Mándanosla por
-      <a href="https://wa.me/584129162019" target="_blank" rel="noopener" style="color:var(--royal);font-weight:700">WhatsApp</a> y la cargamos.
-    </p>
-  </div>
-</section>
-
 <!-- TRUST -->
 <section class="trust">
   <div class="wrap">
@@ -249,7 +82,7 @@
   <div class="wrap">
     <div class="logo"><span class="a">A</span><span class="k">K</span><span class="i">I</span></div>
     <div>Todo lo que necesitas está AKI · Ventas al mayor y al detal</div>
-    <div style="margin-top:8px">WhatsApp: <a href="https://wa.me/584129162019" target="_blank" rel="noopener">+58 412-916-2019</a></div>
+    <div style="margin-top:8px"><a href="libreria.html">📚 Listas escolares</a> · WhatsApp: <a href="https://wa.me/584129162019" target="_blank" rel="noopener">+58 412-916-2019</a></div>
   </div>
 </footer>
 
@@ -272,143 +105,12 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="catalogo.js"></script>
+<script src="cart.js"></script>
 <script>
-/* ============================================================
-   EDITA AQUÍ TUS PRODUCTOS  ← Jose, cambia esto por lo real.
-   precioDetal = precio por 1 unidad
-   precioMayor = precio por unidad comprando al mayor
-   cat: "Belleza" | "Ropa" | "Accesorios" | "Otros"
-   img: por ahora un emoji. Para foto real, ver nota abajo del archivo.
-   ============================================================ */
-const PRODUCTOS = [
-  {id:1,  nombre:"Labial mate larga duración", cat:"Belleza",     precioDetal:5,  precioMayor:3.2, img:"💄"},
-  {id:2,  nombre:"Set de brochas de maquillaje", cat:"Belleza",   precioDetal:12, precioMayor:8,   img:"🖌️"},
-  {id:3,  nombre:"Crema hidratante facial",     cat:"Belleza",     precioDetal:9,  precioMayor:6,   img:"🧴"},
-  {id:4,  nombre:"Perfume femenino 50ml",       cat:"Belleza",     precioDetal:18, precioMayor:12,  img:"🌸"},
-  {id:5,  nombre:"Franela básica unisex",       cat:"Ropa",        precioDetal:8,  precioMayor:5,   img:"👕"},
-  {id:6,  nombre:"Jeans dama corte recto",      cat:"Ropa",        precioDetal:22, precioMayor:15,  img:"👖"},
-  {id:7,  nombre:"Vestido casual de verano",    cat:"Ropa",        precioDetal:25, precioMayor:17,  img:"👗"},
-  {id:8,  nombre:"Gorra ajustable",             cat:"Accesorios",  precioDetal:7,  precioMayor:4.5, img:"🧢"},
-  {id:9,  nombre:"Reloj de pulsera unisex",     cat:"Accesorios",  precioDetal:15, precioMayor:10,  img:"⌚"},
-  {id:10, nombre:"Lentes de sol UV",            cat:"Accesorios",  precioDetal:10, precioMayor:6.5, img:"🕶️"},
-  {id:11, nombre:"Cartera de dama",             cat:"Accesorios",  precioDetal:20, precioMayor:13,  img:"👜"},
-  {id:12, nombre:"Termo / botella deportiva",   cat:"Otros",       precioDetal:11, precioMayor:7,   img:"🥤"},
-  {id:13, nombre:"Audífonos inalámbricos",      cat:"Otros",       precioDetal:16, precioMayor:11,  img:"🎧"},
-  {id:14, nombre:"Organizador de escritorio",   cat:"Otros",       precioDetal:9,  precioMayor:6,   img:"🗂️"},
-];
-
-/* ============================================================
-   LIBRERÍA — catálogo de útiles escolares.
-   Edita precios igual que arriba. Los ids van de 1001 en adelante
-   para no chocar con los productos de la tienda.
-   ============================================================ */
-const ARTICULOS = [
-  {id:1001, nombre:"Cuaderno universitario 100 hojas",            cat:"Librería", precioDetal:2.5, precioMayor:1.8, img:"📓"},
-  {id:1002, nombre:"Cuaderno doble línea 100 hojas",              cat:"Librería", precioDetal:2.2, precioMayor:1.6, img:"📔"},
-  {id:1003, nombre:"Resma de papel carta (500 hojas)",            cat:"Librería", precioDetal:6,   precioMayor:4.5, img:"📄"},
-  {id:1004, nombre:"Lápices de grafito HB (caja x12)",            cat:"Librería", precioDetal:3,   precioMayor:2,   img:"✏️"},
-  {id:1005, nombre:"Caja de colores x12",                         cat:"Librería", precioDetal:3.5, precioMayor:2.4, img:"🖍️"},
-  {id:1006, nombre:"Creyones de cera x12",                        cat:"Librería", precioDetal:2.8, precioMayor:1.9, img:"🖍️"},
-  {id:1007, nombre:"Borrador de goma",                            cat:"Librería", precioDetal:0.5, precioMayor:0.3, img:"🧽"},
-  {id:1008, nombre:"Sacapuntas con depósito",                     cat:"Librería", precioDetal:1,   precioMayor:0.6, img:"🪛"},
-  {id:1009, nombre:"Tijera escolar punta roma",                   cat:"Librería", precioDetal:1.5, precioMayor:1,   img:"✂️"},
-  {id:1010, nombre:"Pega blanca 225g",                            cat:"Librería", precioDetal:2,   precioMayor:1.4, img:"🧴"},
-  {id:1011, nombre:"Barra de pega (glue stick)",                  cat:"Librería", precioDetal:1.2, precioMayor:0.8, img:"📌"},
-  {id:1012, nombre:"Marcadores escolares x6",                     cat:"Librería", precioDetal:3.5, precioMayor:2.4, img:"🖊️"},
-  {id:1013, nombre:"Cartulinas de colores (paquete)",             cat:"Librería", precioDetal:2.5, precioMayor:1.7, img:"🟨"},
-  {id:1014, nombre:"Papel lustrillo (paquete)",                   cat:"Librería", precioDetal:1.5, precioMayor:1,   img:"🟥"},
-  {id:1015, nombre:"Carpeta marrón con gancho",                   cat:"Librería", precioDetal:0.8, precioMayor:0.5, img:"📁"},
-  {id:1016, nombre:"Block de dibujo Nº 6",                        cat:"Librería", precioDetal:2,   precioMayor:1.4, img:"🗒️"},
-  {id:1017, nombre:"Témperas x6 colores",                         cat:"Librería", precioDetal:3.5, precioMayor:2.4, img:"🎨"},
-  {id:1018, nombre:"Pincel escolar",                              cat:"Librería", precioDetal:1,   precioMayor:0.6, img:"🖌️"},
-  {id:1019, nombre:"Regla 30 cm",                                 cat:"Librería", precioDetal:1,   precioMayor:0.6, img:"📏"},
-  {id:1020, nombre:"Juego geométrico (regla, compás, transp.)",   cat:"Librería", precioDetal:4,   precioMayor:2.8, img:"📐"},
-  {id:1021, nombre:"Bolígrafos azul/negro/rojo (x3)",             cat:"Librería", precioDetal:1.5, precioMayor:1,   img:"🖊️"},
-  {id:1022, nombre:"Resaltador",                                  cat:"Librería", precioDetal:1.2, precioMayor:0.8, img:"🟢"},
-  {id:1023, nombre:"Foami carta (paquete de colores)",            cat:"Librería", precioDetal:3,   precioMayor:2,   img:"🟦"},
-  {id:1024, nombre:"Plastilina x12",                              cat:"Librería", precioDetal:2.5, precioMayor:1.7, img:"🌈"},
-];
-
-/* ============================================================
-   COLEGIOS — listas oficiales por grado.
-   Cada item: {id: <id de ARTICULOS>, q: <cantidad que pide el colegio>}
-   Agrega colegios o grados copiando el formato.
-   ============================================================ */
-const COLEGIOS = [
-  {id:"cef", nombre:"CEF", lema:"Centro Educativo", grados:[
-    {nombre:"Preescolar", items:[
-      {id:1006,q:2},{id:1011,q:3},{id:1009,q:1},{id:1013,q:2},{id:1014,q:2},
-      {id:1017,q:1},{id:1018,q:2},{id:1024,q:2},{id:1023,q:1},{id:1015,q:3}
-    ]},
-    {nombre:"1er Grado", items:[
-      {id:1002,q:4},{id:1004,q:1},{id:1005,q:1},{id:1007,q:2},{id:1008,q:1},
-      {id:1011,q:2},{id:1019,q:1},{id:1015,q:4},{id:1003,q:1},{id:1016,q:1}
-    ]},
-    {nombre:"4to Grado", items:[
-      {id:1001,q:5},{id:1021,q:2},{id:1022,q:2},{id:1020,q:1},{id:1003,q:1},
-      {id:1012,q:1},{id:1015,q:5},{id:1016,q:1},{id:1010,q:1}
-    ]},
-  ]},
-  {id:"sanagustin", nombre:"San Agustín", lema:"Colegio San Agustín", grados:[
-    {nombre:"Preescolar", items:[
-      {id:1005,q:1},{id:1006,q:2},{id:1011,q:2},{id:1009,q:1},{id:1017,q:1},
-      {id:1024,q:2},{id:1013,q:2},{id:1023,q:1},{id:1015,q:2}
-    ]},
-    {nombre:"2do Grado", items:[
-      {id:1002,q:3},{id:1004,q:1},{id:1005,q:1},{id:1007,q:2},{id:1008,q:1},
-      {id:1011,q:2},{id:1019,q:1},{id:1016,q:1},{id:1015,q:3},{id:1003,q:1}
-    ]},
-    {nombre:"5to Grado", items:[
-      {id:1001,q:6},{id:1021,q:3},{id:1022,q:2},{id:1020,q:1},{id:1012,q:1},
-      {id:1003,q:2},{id:1015,q:6},{id:1016,q:1},{id:1010,q:1}
-    ]},
-  ]},
-  {id:"sanignacio", nombre:"San Ignacio", lema:"Colegio San Ignacio de Loyola", grados:[
-    {nombre:"Preescolar", items:[
-      {id:1006,q:3},{id:1011,q:3},{id:1009,q:1},{id:1017,q:1},{id:1018,q:2},
-      {id:1024,q:2},{id:1013,q:2},{id:1014,q:2},{id:1023,q:2},{id:1015,q:3}
-    ]},
-    {nombre:"3er Grado", items:[
-      {id:1002,q:4},{id:1004,q:1},{id:1005,q:1},{id:1007,q:2},{id:1008,q:1},
-      {id:1011,q:2},{id:1019,q:1},{id:1015,q:4},{id:1016,q:1},{id:1003,q:1},{id:1012,q:1}
-    ]},
-    {nombre:"6to Grado", items:[
-      {id:1001,q:6},{id:1021,q:3},{id:1022,q:2},{id:1020,q:1},{id:1012,q:1},
-      {id:1003,q:2},{id:1015,q:6},{id:1016,q:1},{id:1010,q:1}
-    ]},
-  ]},
-  {id:"santotomas", nombre:"Santo Tomás", lema:"Colegio Santo Tomás de Aquino", grados:[
-    {nombre:"Preescolar", items:[
-      {id:1006,q:2},{id:1011,q:2},{id:1009,q:1},{id:1017,q:1},{id:1018,q:1},
-      {id:1024,q:2},{id:1013,q:2},{id:1023,q:1},{id:1015,q:2}
-    ]},
-    {nombre:"2do Grado", items:[
-      {id:1002,q:3},{id:1004,q:1},{id:1005,q:1},{id:1007,q:2},{id:1008,q:1},
-      {id:1011,q:2},{id:1019,q:1},{id:1015,q:3},{id:1016,q:1},{id:1003,q:1}
-    ]},
-    {nombre:"5to Grado", items:[
-      {id:1001,q:5},{id:1021,q:2},{id:1022,q:2},{id:1020,q:1},{id:1012,q:1},
-      {id:1003,q:1},{id:1015,q:5},{id:1016,q:1},{id:1010,q:1}
-    ]},
-  ]},
-];
-
-const WHATSAPP = "584129162019";   // ← tu número (formato internacional, sin +)
-const MIN_MAYOR = 6;               // ← mínimo de unidades al mayor
-const MONEDA = "$";                // ← símbolo de moneda
-
-/* ---------------- estado ---------------- */
-let modo = "detal";
+/* ---------------- página tienda ---------------- */
 let filtro = "Todos";
-let cart = {}; // {id: qty}
 
-const $ = s => document.querySelector(s);
-const CATALOGO = [...PRODUCTOS, ...ARTICULOS];     // tienda + librería
-const getProd = id => CATALOGO.find(x => x.id == id);
-const precioDe = p => modo === "mayor" ? p.precioMayor : p.precioDetal;
-const fmt = n => MONEDA + (Math.round(n*100)/100);
-
-/* ---------------- render categorías ---------------- */
 function renderCats(){
   const cats = ["Todos", ...new Set(PRODUCTOS.map(p=>p.cat))];
   $("#cats").innerHTML = cats.map(c =>
@@ -417,7 +119,6 @@ function renderCats(){
 }
 function setFiltro(c){ filtro=c; renderCats(); renderGrid(); }
 
-/* ---------------- render productos ---------------- */
 function renderGrid(){
   const lista = PRODUCTOS.filter(p => filtro==="Todos" || p.cat===filtro);
   $("#grid").innerHTML = lista.map(p => `
@@ -433,198 +134,11 @@ function renderGrid(){
   `).join("");
 }
 
-/* ---------------- modo detal/mayor ---------------- */
-function setMode(m){
-  modo = m;
-  $("#btnDetal").classList.toggle("active", m==="detal");
-  $("#btnMayor").classList.toggle("active", m==="mayor");
-  $("#modeNote").textContent = m==="mayor"
-    ? `Precios al mayor — pedido mínimo ${MIN_MAYOR} unidades en total.`
-    : "Precios al detal — compra desde 1 unidad.";
-  renderGrid();
-  renderCart();
-  if(typeof renderLista === "function" && Object.keys(listaQty).length) renderLista();
-}
-
-/* ---------------- carrito ---------------- */
-function addToCart(id){
-  cart[id] = (cart[id]||0) + 1;
-  save(); renderCart(); updateCount();
-  const p = getProd(id);
-  toast(`✓ ${p.nombre} agregado`);
-}
-function changeQty(id, d){
-  cart[id] = (cart[id]||0) + d;
-  if(cart[id] <= 0) delete cart[id];
-  save(); renderCart(); updateCount();
-}
-function removeItem(id){ delete cart[id]; save(); renderCart(); updateCount(); }
-
-function totalUnidades(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
-function totalPrecio(){
-  return Object.entries(cart).reduce((sum,[id,q])=>{
-    const p = getProd(id); return sum + precioDe(p)*q;
-  },0);
-}
-function updateCount(){ $("#cartCount").textContent = totalUnidades(); }
-
-function renderCart(){
-  const ids = Object.keys(cart);
-  const box = $("#drawerItems");
-  if(ids.length===0){
-    box.innerHTML = `<div class="empty">Tu carrito está vacío.<br>Agrega productos para empezar.</div>`;
-  } else {
-    box.innerHTML = ids.map(id=>{
-      const p = getProd(id); const q = cart[id];
-      return `<div class="ci">
-        <div class="ci-thumb">${p.img}</div>
-        <div class="ci-info">
-          <h4>${p.nombre}</h4>
-          <div class="ci-price">${fmt(precioDe(p))} c/u</div>
-          <div class="qty">
-            <button onclick="changeQty(${id},-1)">−</button>
-            <span>${q}</span>
-            <button onclick="changeQty(${id},1)">+</button>
-          </div>
-          <button class="rm" onclick="removeItem(${id})">Quitar</button>
-        </div>
-        <div style="font-weight:800;color:var(--navy)">${fmt(precioDe(p)*q)}</div>
-      </div>`;
-    }).join("");
-  }
-  $("#cartTotal").textContent = fmt(totalPrecio());
-
-  // mínimo al mayor
-  const u = totalUnidades();
-  const btn = $("#checkoutBtn"); const note = $("#footNote");
-  if(u===0){ btn.disabled = true; note.textContent = ""; }
-  else if(modo==="mayor" && u < MIN_MAYOR){
-    btn.disabled = true;
-    note.textContent = `⚠️ Al mayor el mínimo es ${MIN_MAYOR} unidades. Te faltan ${MIN_MAYOR-u}.`;
-  } else {
-    btn.disabled = false;
-    note.textContent = `${u} ${u===1?'unidad':'unidades'} · compra al ${modo}.`;
-  }
-}
-
-/* ---------------- drawer ---------------- */
-function openCart(){ $("#drawer").classList.add("open"); $("#overlay").classList.add("open"); }
-function closeCart(){ $("#drawer").classList.remove("open"); $("#overlay").classList.remove("open"); }
-
-/* ---------------- checkout WhatsApp ---------------- */
-function checkout(){
-  const ids = Object.keys(cart); if(ids.length===0) return;
-  let msg = `¡Hola AKI! 🛒 Quiero hacer este pedido (al ${modo}):\n\n`;
-  ids.forEach(id=>{
-    const p = getProd(id); const q = cart[id];
-    msg += `• ${q}x ${p.nombre} — ${fmt(precioDe(p))} c/u = ${fmt(precioDe(p)*q)}\n`;
-  });
-  msg += `\nTotal: ${fmt(totalPrecio())} (${totalUnidades()} unidades)`;
-  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
-}
-
-/* ---------------- persistencia ---------------- */
-function save(){ localStorage.setItem("aki_cart", JSON.stringify(cart)); }
-function load(){ try{ cart = JSON.parse(localStorage.getItem("aki_cart"))||{}; }catch(e){ cart={}; } }
-
-/* ---------------- toast ---------------- */
-let toastT;
-function toast(t){
-  const el=$("#toast"); el.textContent=t; el.classList.add("show");
-  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),1800);
-}
-
-/* ============================================================
-   LIBRERÍA — pestañas de colegios y armado de lista
-   ============================================================ */
-let colegioActivo = COLEGIOS[0].id;
-let gradoActivo = 0;
-let listaQty = {};   // {idArticulo: cantidad} de la lista mostrada
-
-function colegioActual(){ return COLEGIOS.find(c=>c.id===colegioActivo); }
-
-function renderSchoolTabs(){
-  $("#schoolTabs").innerHTML = COLEGIOS.map(c=>`
-    <button class="school-tab ${c.id===colegioActivo?'active':''}" onclick="setColegio('${c.id}')">
-      ${c.nombre}<small>${c.lema}</small>
-    </button>`).join("");
-}
-function setColegio(id){ colegioActivo=id; gradoActivo=0; renderSchoolTabs(); renderGradeTabs(); cargarLista(); }
-
-function renderGradeTabs(){
-  const c = colegioActual();
-  $("#gradeTabs").innerHTML = c.grados.map((g,i)=>`
-    <button class="grade-tab ${i===gradoActivo?'active':''}" onclick="setGrado(${i})">${g.nombre}</button>`).join("");
-}
-function setGrado(i){ gradoActivo=i; renderGradeTabs(); cargarLista(); }
-
-/* carga las cantidades oficiales de la lista al estado editable */
-function cargarLista(){
-  const g = colegioActual().grados[gradoActivo];
-  listaQty = {};
-  g.items.forEach(it=> listaQty[it.id] = it.q);
-  renderLista();
-}
-function changeListaQty(id,d){
-  listaQty[id] = Math.max(0,(listaQty[id]||0)+d);
-  renderLista();
-}
-function totalLista(){
-  return Object.entries(listaQty).reduce((s,[id,q])=> s + precioDe(getProd(id))*q, 0);
-}
-function totalUnidadesLista(){
-  return Object.values(listaQty).reduce((a,b)=>a+b,0);
-}
-
-function renderLista(){
-  const c = colegioActual();
-  const g = c.grados[gradoActivo];
-  const filas = g.items.map(it=>{
-    const p = getProd(it.id); const q = listaQty[it.id]||0;
-    return `<div class="lista-row" style="${q===0?'opacity:.45':''}">
-      <div class="lr-ico">${p.img}</div>
-      <div class="lr-info">
-        <h4>${p.nombre}</h4>
-        <small>${fmt(precioDe(p))} c/u${modo==='mayor'?' (al mayor)':''}</small>
-      </div>
-      <div class="qty">
-        <button onclick="changeListaQty(${it.id},-1)">−</button>
-        <span>${q}</span>
-        <button onclick="changeListaQty(${it.id},1)">+</button>
-      </div>
-      <div class="lr-sub">${fmt(precioDe(p)*q)}</div>
-    </div>`;
-  }).join("");
-
-  $("#listaWrap").innerHTML = `
-    <div class="lista-card">
-      <div class="lista-head">
-        <h3>${c.nombre} · ${g.nombre}</h3>
-        <span class="lh-note">Ajusta cantidades si ya tienes algún útil (pon 0 para quitarlo).</span>
-      </div>
-      ${filas}
-      <div class="lista-foot">
-        <div class="lf-tot">Total de la lista (${totalUnidadesLista()} útiles)<b>${fmt(totalLista())}</b></div>
-        <button class="add-lista" onclick="agregarLista()">🛒 Agregar lista completa al carrito</button>
-      </div>
-    </div>`;
-}
-
-function agregarLista(){
-  let n = 0;
-  Object.entries(listaQty).forEach(([id,q])=>{
-    if(q>0){ cart[id] = (cart[id]||0) + q; n += q; }
-  });
-  if(n===0){ toast("La lista está en 0 útiles"); return; }
-  save(); renderCart(); updateCount();
-  const c = colegioActual(); const g = c.grados[gradoActivo];
-  toast(`✓ Lista ${c.nombre} ${g.nombre} agregada (${n} útiles)`);
-  openCart();
-}
+/* qué re-pintar al cambiar detal/mayor (lo llama cart.js) */
+function onModeChange(){ renderGrid(); }
 
 /* ---------------- init ---------------- */
 load(); renderCats(); renderGrid(); renderCart(); updateCount();
-renderSchoolTabs(); renderGradeTabs(); cargarLista();
 </script>
 </body>
 </html>
