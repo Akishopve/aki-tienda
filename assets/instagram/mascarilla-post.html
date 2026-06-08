@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#16357E;--royal:#2E7CC4;--teal:#20B8CE;--light:#36C5D8;
+    --pink:#EE8FA6;--pink-d:#E36E8C;
+  }
+  html,body{margin:0}
+  .post{
+    width:1080px;height:1350px;position:relative;overflow:hidden;
+    font-family:'Segoe UI',system-ui,Arial,sans-serif;
+    background:
+      radial-gradient(900px 600px at 80% 12%, rgba(54,197,216,.20), transparent 60%),
+      radial-gradient(700px 500px at 15% 95%, rgba(46,124,196,.16), transparent 60%),
+      linear-gradient(160deg,#ffffff 0%,#eaf6f9 100%);
+  }
+  /* deco blobs */
+  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5}
+  .b1{width:220px;height:220px;background:radial-gradient(circle at 30% 30%,#bfeaf2,#7fd4e3);top:-60px;left:-50px}
+  .b2{width:160px;height:160px;background:radial-gradient(circle at 30% 30%,#cfe3f7,#9bc2ec);bottom:380px;right:-40px;opacity:.45}
+
+  /* header */
+  .head{position:absolute;top:64px;left:0;right:0;text-align:center}
+  .logo{font-size:96px;font-weight:800;letter-spacing:2px;line-height:1}
+  .logo .a{color:var(--navy)}.logo .k{color:var(--royal)}.logo .i{color:var(--teal)}
+  .slogan{margin-top:10px;font-size:30px;font-weight:700;
+    background:linear-gradient(90deg,var(--navy),var(--teal));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* product photo */
+  .stage{position:absolute;top:300px;left:50%;transform:translateX(-50%);
+    width:620px;height:700px;display:flex;align-items:center;justify-content:center}
+  .prodimg{max-width:100%;max-height:100%;object-fit:contain;
+    filter:drop-shadow(0 38px 60px rgba(46,124,196,.28))}
+
+  /* sparkles */
+  .spark{position:absolute;color:#fff;font-size:40px;text-shadow:0 0 16px rgba(54,197,216,.8)}
+
+  /* price badge */
+  .price{position:absolute;top:330px;right:70px;width:190px;height:190px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,var(--light),var(--teal));
+    box-shadow:0 18px 40px rgba(32,184,206,.5);transform:rotate(8deg);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:5}
+  .price .small{font-size:24px;font-weight:700;opacity:.95;margin-bottom:-6px}
+  .price .big{font-size:84px;font-weight:800;line-height:1}
+  .price .u{font-size:22px;font-weight:700;opacity:.95;margin-top:-4px}
+
+  /* bottom banner */
+  .banner{position:absolute;left:0;right:0;bottom:0;height:300px;
+    background:linear-gradient(135deg,var(--navy),#0f2a63);color:#fff;
+    padding:46px 70px 0;text-align:center}
+  .pname{font-size:46px;font-weight:800;line-height:1.1}
+  .pname span{color:var(--light)}
+  .bens{margin-top:18px;font-size:30px;font-weight:600;color:#cfe0f5}
+  .cta{margin-top:26px;display:inline-flex;align-items:center;gap:14px;
+    background:#25D366;color:#fff;font-size:30px;font-weight:800;
+    padding:18px 40px;border-radius:999px}
+  .cta svg{width:34px;height:34px;fill:#fff}
+  .site{margin-top:14px;font-size:24px;color:#9fb8e0;font-weight:600}
+  .note{margin-top:8px;font-size:20px;color:#7f9bc9;font-style:italic;font-weight:500}
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <div class="head">
+    <div class="logo"><span class="a">A</span><span class="k">K</span><span class="i">I</span></div>
+    <div class="slogan">Todo lo que necesitas está AKI</div>
+  </div>
+
+  <div class="spark" style="top:300px;left:120px">✦</div>
+  <div class="spark" style="top:560px;right:150px;font-size:28px">✦</div>
+  <div class="spark" style="top:780px;left:160px;font-size:30px">✦</div>
+
+  <div class="stage">
+    <img class="prodimg" src="biodance.jpg" alt="Biodance Bio Collagen Real Deep Mask">
+  </div>
+
+  <div class="price">
+    <div class="small">SOLO</div>
+    <div class="big">$6</div>
+    <div class="u">al detal</div>
+  </div>
+
+  <div class="banner">
+    <div class="pname">Mascarilla de <span>Bio-Colágeno</span></div>
+    <div class="bens">Hidrata · Minimiza poros · Reafirma</div>
+    <div class="cta">
+      <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+      Pídela por WhatsApp
+    </div>
+    <div class="site">aki-tienda.vercel.app</div>
+    <div class="note">* Precio al mayor desde 6 unidades</div>
+  </div>
+</div>
+</body>
+</html>

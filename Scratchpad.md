@@ -1,13 +1,14 @@
 # Scratchpad — current tasks
 
 ## Now
-- [x] Fill brand.md (voice + audience + positioning)
-- [ ] Reunir PRUEBA: comparativa de precio, garantía, fotos reales, 2-3 reseñas
+- [x] Tienda online LIVE → https://aki-tienda.vercel.app
+- [ ] Cargar PRODUCTOS REALES (nombre, precio detal, precio mayor, categoría)
+- [ ] Fotos reales de productos (hoy emojis)
 
 ## Next
-- [x] Foco primera pieza: **MAYOR (B2B)** — revendedores
-- [ ] PIEZA 1: Landing "Sé mayorista de AKI" → captura contacto (WhatsApp) → enviar lista de precios
-- [ ] Landing / tienda live (Vercel)
+- [x] Foco: tienda online mayor + detal
+- [ ] Conectar dominio propio (ej: akishop.com) — opcional
+- [ ] Reunir PRUEBA: comparativa de precio / margen, reseñas
 
 ## Parked
 - [ ]

@@ -15,6 +15,7 @@ const MONEDA    = "$";             // símbolo de moneda
    cat: "Belleza" | "Ropa" | "Accesorios" | "Otros"
    ============================================================ */
 const PRODUCTOS = [
+  {id:15, nombre:"Mascarilla Biodance Bio-Collagen Real Deep Mask", cat:"Belleza", precioDetal:6, precioMayor:4, img:'<img src="img/biodance.jpg" alt="Biodance Bio Collagen" style="width:100%;height:100%;object-fit:cover">'},
   {id:1,  nombre:"Labial mate larga duración", cat:"Belleza",     precioDetal:5,  precioMayor:3.2, img:"💄"},
   {id:2,  nombre:"Set de brochas de maquillaje", cat:"Belleza",   precioDetal:12, precioMayor:8,   img:"🖌️"},
   {id:3,  nombre:"Crema hidratante facial",     cat:"Belleza",     precioDetal:9,  precioMayor:6,   img:"🧴"},
