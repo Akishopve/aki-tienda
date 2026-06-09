@@ -10,3 +10,6 @@ memory/
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# Archivos temporales de trabajo de imágenes (scratch)
+assets/instagram/_*
