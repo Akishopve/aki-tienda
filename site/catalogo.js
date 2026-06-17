@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* -------- AJUSTES GENERALES -------- */
-const WHATSAPP  = "584129162019";  // tu número (formato internacional, sin +)
+const WHATSAPP  = "584160114464";  // tu número (formato internacional, sin +)
 const MIN_MAYOR = 6;               // mínimo de unidades para comprar al mayor
 const MONEDA    = "$";             // símbolo de moneda
 
