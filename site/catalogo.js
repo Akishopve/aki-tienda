@@ -16,7 +16,7 @@ const MONEDA    = "$";             // símbolo de moneda
    ============================================================ */
 const PRODUCTOS = [
   {id:15, nombre:"Mascarilla Biodance Bio-Collagen Real Deep Mask", cat:"Belleza", precioDetal:6, precioMayor:4, img:'<img src="img/biodance-clean.png" alt="Mascarilla Bio Collagen Real Deep Mask" style="width:100%;height:100%;object-fit:cover">'},
-  {id:16, nombre:"Máquina Automática para Hacer Mascarillas Faciales", cat:"Belleza", precioDetal:70, precioMayor:50, img:'<img src="img/maquina.png" alt="Máquina Automática para Hacer Mascarillas Faciales" style="width:100%;height:100%;object-fit:cover">'},
+  {id:16, nombre:"Máquina Automática para Hacer Mascarillas Faciales", cat:"Belleza", precioDetal:80, precioMayor:60, img:'<img src="img/maquina.png" alt="Máquina Automática para Hacer Mascarillas Faciales" style="width:100%;height:100%;object-fit:cover">'},
   {id:17, nombre:"Base de Maquillaje en Barra", cat:"Belleza", precioDetal:15, precioMayor:10, img:'<img src="img/barra.png" alt="Base de Maquillaje en Barra" style="width:100%;height:100%;object-fit:cover">'},
   {id:18, nombre:"Lápiz Labial que Cambia de Color", cat:"Belleza", precioDetal:20, precioMayor:15, img:'<img src="img/labial.png" alt="Lápiz Labial que Cambia de Color" style="width:100%;height:100%;object-fit:cover">'},
   /* --- Productos ocultos temporalmente (no se muestran en la tienda). Re-activar quitando este comentario y el cierre de abajo. ---
