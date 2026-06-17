@@ -16,6 +16,7 @@ const MONEDA    = "$";             // símbolo de moneda
    ============================================================ */
 const PRODUCTOS = [
   {id:15, nombre:"Mascarilla Biodance Bio-Collagen Real Deep Mask", cat:"Belleza", precioDetal:6, precioMayor:4, img:'<img src="img/biodance-clean.png" alt="Mascarilla Bio Collagen Real Deep Mask" style="width:100%;height:100%;object-fit:cover">'},
+  /* --- Productos ocultos temporalmente (no se muestran en la tienda). Re-activar quitando este comentario y el cierre de abajo. ---
   {id:1,  nombre:"Labial mate larga duración", cat:"Belleza",     precioDetal:5,  precioMayor:3.2, img:"💄"},
   {id:2,  nombre:"Set de brochas de maquillaje", cat:"Belleza",   precioDetal:12, precioMayor:8,   img:"🖌️"},
   {id:3,  nombre:"Crema hidratante facial",     cat:"Belleza",     precioDetal:9,  precioMayor:6,   img:"🧴"},
@@ -30,6 +31,7 @@ const PRODUCTOS = [
   {id:12, nombre:"Termo / botella deportiva",   cat:"Otros",       precioDetal:11, precioMayor:7,   img:"🥤"},
   {id:13, nombre:"Audífonos inalámbricos",      cat:"Otros",       precioDetal:16, precioMayor:11,  img:"🎧"},
   {id:14, nombre:"Organizador de escritorio",   cat:"Otros",       precioDetal:9,  precioMayor:6,   img:"🗂️"},
+  --- fin productos ocultos --- */
 ];
 
 /* ============================================================
